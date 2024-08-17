@@ -1,0 +1,15 @@
+.btn-red {
+    background-color: #ca1d1d; /* Pink color */
+    border-color: #ca1d1d; /* Border color to match the button */
+    color: white; /* Text color */
+  }
+
+  .btn-red:hover {
+    background-color: #ff85c0; /* Slightly lighter pink for hover effect */
+    border-color: #ff85c0; /* Match border color on hover */
+  }
+
+  .rounded-top{
+    border-radius: 0.9rem 0.9rem 0 0; /* Adjust as needed */
+    
+  }
