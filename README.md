@@ -5,19 +5,21 @@
 In this project, I have created a Task Management System App using React JS, Javascirpt, CSS, Bootstrap and HTML.
 
 ### Add Task Page
-![](https://github.com/Nikitadhonnar16/TodoList_React_Assignment/blob/main/images/Add_Task.png) 
+![](https://github.com/Nikitadhonnar16/TodoList_React_Assignment/blob/main/todo_webapp/images/Add_Task.png) 
 
 ### Form Validation
-![](https://github.com/Nikitadhonnar16/TodoList_React_Assignment/blob/main/images/Form_Validation.png) 
+![](https://github.com/Nikitadhonnar16/TodoList_React_Assignment/blob/main/todo_webapp/images/Form_Validation.png) 
 
 ### List Task Page
-![](https://github.com/Nikitadhonnar16/TodoList_React_Assignment/blob/main/images/List_View.png) 
+![](https://github.com/Nikitadhonnar16/TodoList_React_Assignment/blob/main/todo_webapp/images/List_View.png) 
 
 
 ## To install all dependencies ##
+> cd todo_webapp
 > npm install i
 
 ## To start a project ##
+> cd todo_webapp
 > npm start
 
 ## To access a project ##
