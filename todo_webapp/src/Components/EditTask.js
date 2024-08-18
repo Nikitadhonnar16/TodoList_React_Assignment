@@ -8,6 +8,7 @@ const EditTask = ({ task, onSave, onCancel }) => {
   const [selectedPriority, setSelectedPriority] = useState('');
   const [selectPriority, setSelectPriority] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [value, setValue] = useState('');
 
   useEffect(() => {
     if (task) {
@@ -23,10 +24,11 @@ const EditTask = ({ task, onSave, onCancel }) => {
     setSelectPriority((prevState) => !prevState);
   };
 
-  const handlePrioritySelect = (priority) => {
-    setSelectedPriority(priority);
-    setSelectPriority(false);
+  const handlePrioritySelect = (e) => {
+    setValue(e.target.value);
+    setSelectedPriority(e.target.value);
   };
+
 
   const handleSave = () => {
     onSave({
@@ -37,6 +39,14 @@ const EditTask = ({ task, onSave, onCancel }) => {
       DueDate: selectedDate.toISOString() // Ensure it's a valid ISO string
     });
   };
+
+  // const handlePrioritySelect = (e) => {
+  //   setValue(e.target.value);
+  //   setSelectedPriority(e.target.value);
+  // };
+
+  // console.log(task.TaskPriority);
+  
 
   if (!task) return null;
 
@@ -81,7 +91,7 @@ const EditTask = ({ task, onSave, onCancel }) => {
 
           
 
-          <div className="rounded-4 p-3 mt-3 border border-1 bg-white" onClick={handlePriority}>
+          {/* <div className="rounded-4 p-3 mt-3 border border-1 bg-white" onClick={handlePriority}>
             <div className="d-flex align-items-center justify-content-between">
               <p className="mb-0 fw-medium me-3">Select Priority</p>
               <FaChevronDown size={15} />
@@ -96,7 +106,15 @@ const EditTask = ({ task, onSave, onCancel }) => {
                 </ul>
               </div>
             )}
-          </div>
+          </div> */}
+          
+
+          <select className="rounded-4 p-3 mt-3 border border-1 bg-white w-100" value={value} onChange={handlePrioritySelect}>
+            <option value={task.TaskPriority} style={{color: "gray"}}>{task.TaskPriority}</option>
+                <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+          </select>
 
           <div className="d-flex justify-content-center mt-5">
             <div className="col-auto">

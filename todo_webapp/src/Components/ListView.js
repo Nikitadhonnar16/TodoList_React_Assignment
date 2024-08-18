@@ -12,11 +12,10 @@ const ListView = ({ edata=[] }) => {
   const [addTaskForm, setAddTaskForm] = useState(false);
   const [editTaskIndex, setEditTaskIndex] = useState(null);
 const [data,setData]=useState(edata)
+
   const filteredTasks = filter === 'All'
     ? data
-    : filter === 'Done'
-    ? data.filter(task => task.TaskStatus === 'done')
-    : [];
+    : data.filter(task => task.TaskPriority === filter);;
 
   const handleTaskClick = (index) => {
     setSelectedTaskIndex(index === selectedTaskIndex ? null : index);
@@ -60,11 +59,12 @@ const [data,setData]=useState(edata)
   console.log(data)
   return (
     <div className="container d-flex flex-column align-items-center">
-      <div className="col w-100 mt-4">
-        <div className="row-2 border border-1 rounded-top" style={{ width: '180px', marginLeft: '323px' }}>
+      <div className="col w-100 mt-3">
+        <div className="row-2   border-bottom rounded-top" style={{ width: '180px', marginLeft: '323px' }}>
           <div className="mb-3 d-flex align-items-center">
             <FaFolderOpen size={23} />
             <h5 className='mt-2'>Task List View</h5>
+           
           </div>
         </div>
 
@@ -108,8 +108,8 @@ const [data,setData]=useState(edata)
               Done
             </button>
           </div>
-
-          {data.map((task, index) => (
+          
+          {filteredTasks.map((task, index) => (
             <div
               key={index}
               className="rounded-4 p-3 mt-3 border border-1 bg-white"
