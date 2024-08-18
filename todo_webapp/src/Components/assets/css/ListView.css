@@ -1,5 +1,9 @@
 .btn-pink {
     background-color: #ff85c0; /* Pink color */
-    border-color: #ff85c0; /* Border color to match the button */
     color: white; /* Text color */
   }
+
+  /* .bg-color
+  {
+    background-color: rgb(247, 243, 243);
+  } */

@@ -1,0 +1,125 @@
+import React, { useState } from 'react';
+import { FaFolderOpen } from 'react-icons/fa';
+import { BsPlusCircle } from 'react-icons/bs';
+import { IoMdArrowDropleft } from 'react-icons/io';
+import './assets/css/ListView.css';
+import AddTask from './AddTask';
+
+const ListView = ({ data=[] }) => {
+  const [filter, setFilter] = useState('All');
+  const [selectedTaskIndex, setSelectedTaskIndex] = useState(null);
+  const [addTaskForm,setAddTaskForm]=useState(false);
+
+  // Get unique priorities from data
+  const priorities = [...new Set(data.map(task => task.priority))];
+
+  // Filter tasks based on selected filter
+  const filteredTasks = filter === 'All'
+    ? data
+    : filter === 'Done'
+    ? data.filter(task => task.taskstatus.toLowerCase() === 'done')
+    : data.filter(task => task.priority.toLowerCase() === filter.toLowerCase());
+
+  // Toggle the selected task or deselect if already selected
+  const handleTaskClick = (index) => {
+    setSelectedTaskIndex(index === selectedTaskIndex ? null : index);
+  };
+
+  console.log(data);
+
+  if (addTaskForm) {
+    return <AddTask  />;
+  }
+
+  console.log(data);
+  
+  return (
+
+
+    <div className="container d-flex flex-column align-items-center">
+      <div className="col w-100 mt-4">
+        <div className="row-2 border border-1 rounded-top" style={{ width: '180px', marginLeft: '323px' }}>
+          <div className="mb-3 d-flex align-items-center">
+            <FaFolderOpen size={23} />
+            <h5 className='mt-2'>Task List View</h5>
+          </div>
+        </div>
+
+        <div className="row-6 w-50 mx-auto bg-color" style={{ height: '90vh' }}>
+          <div>
+            <button className="btn-pink border-0  rounded-4 p-2 m-3"  onClick={()=>setAddTaskForm(true)} >
+              <BsPlusCircle className='me-2' />
+              Add New Task
+            </button>
+          </div>
+
+          <div className="mb-3">
+            <button
+              className={`btn rounded-top px-4 ms-2 ${filter === 'All' ? 'bg-light' : 'btn-pink'}`}
+              onClick={() => setFilter('All')}
+            >
+              All
+            </button>
+            {priorities.map(priority => (
+              <button
+                key={priority}
+                className={`btn rounded-top px-4 ms-2 ${filter === priority ? 'bg-light' : 'btn-pink'}`}
+                onClick={() => setFilter(priority)}
+              >
+                {priority}
+              </button>
+            ))}
+            <button
+              className={`btn rounded-top px-4 ms-2 ${filter === 'Done' ? 'bg-light' : 'btn-pink'}`}
+              onClick={() => setFilter('Done')}
+            >
+              Done
+            </button>
+          </div>
+
+          {filteredTasks.map((task, index) => (
+            <div
+              key={index}
+              className="rounded-4 p-3 mt-3 border border-1 bg-white"
+              onClick={() => handleTaskClick(index)}
+              role="button"
+              tabIndex={0}
+              aria-expanded={selectedTaskIndex === index}
+            >
+              <div className="d-flex justify-content-between align-items-center">
+                <div className='d-flex'>
+                  <IoMdArrowDropleft size={28} />
+                  <h6 className='ms-2'>{task.name}</h6>
+                </div>
+                <h6>{task.priority}</h6>
+              </div>
+
+              {/* Conditionally render task details if this task is selected */}
+              {selectedTaskIndex === index && (
+                <div className="task-details p-3 mt-3">
+                  <div className=" mb-2">
+                    <div className="me-2 fw-medium">Description :</div>
+                    <div className="flex-grow-1 ">{task.description}</div>
+                  </div>
+                  <div className="mb-2">
+                             <div className="me-2 fw-medium ">Due Date :</div>
+                      <div className='d-flex'>
+                            <div className="">{task.date}</div>
+                            <div className="ms-1">- {task.time}</div>        
+                     </div>                   
+                  </div>
+                  <div className='d-flex ms-2 mt-3 gap-2'>
+                  <button class="btn btn-secondary me-2 px-5 rounded-4">Edit</button>
+                  <button class="btn btn-secondary px-5 rounded-4">Delete</button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ListView;

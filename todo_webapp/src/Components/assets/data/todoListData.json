@@ -1,0 +1,46 @@
+{
+    "tasks": [
+      {
+        "TaskName": "Complete Project Report",
+        "TaskDescription": "Write and submit the final project report.",
+        "TaskDate": "2024-08-18",
+        "TaskTime": "10:00 AM",
+        "priority": "High",
+       "TaskStatus":"done"
+       
+      },
+      {
+        "TaskName": "Team Meeting",
+        "TaskDescription": "Discuss project updates and assign new tasks.",
+        "TaskDate": "2024-08-19",
+        "TaskTime": "2:00 PM",
+        "priority": "Medium",
+        "TaskStatus":"pending"
+
+      },
+      {
+        "TaskName": "Code Review",
+        "TaskDescription": "Review pull requests for the new feature implementation.",
+        "TaskDate": "2024-08-20",
+        "TaskTime": "9:00 AM",
+        "priority": "High",
+        "TaskStatus":"in progress"
+      },
+      {
+        "TaskName": "Database Backup",
+        "TaskDescription": "Perform routine database backup.",
+        "TaskDate": "2024-08-21",
+        "TaskTime": "2:00 AM",
+        "priority": "Low",
+        "TaskStatus":"done"
+      },
+      {
+        "TaskName": "Design Mockups",
+        "TaskDescription": "Create mockups for the new website redesign.",
+        "TaskDate": "2024-08-22",
+        "TaskTime": "4:00 PM",
+        "priority": "high",
+        "TaskStatus":"pending"
+      }
+    ]
+}
